@@ -160,5 +160,7 @@ abstract class  LocaleKeys {
   static const rent_terms_error = 'rent_terms_error';
   static const place_of_birth = 'place_of_birth';
   static const completion_booking = 'completion_booking';
+  static const update = 'update';
+  static const please_update = 'please_update';
 
 }

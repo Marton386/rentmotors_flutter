@@ -180,7 +180,9 @@ class CodegenLoader extends AssetLoader{
   "book": "Забронировать",
   "rent_terms_error": "Вы не можете продолжить без согласия с политикой конфиденциальности и условиями аренды",
   "place_of_birth": "Место рождения",
-  "completion_booking": "Завершение бронирования"
+  "completion_booking": "Завершение бронирования",
+  "update": "Обновить",
+  "please_update": "Пожалуйста, обновите Ваше приложение"
 };
 static const Map<String,dynamic> en = {
   "app_name": "Rentmotors",
@@ -348,7 +350,9 @@ static const Map<String,dynamic> en = {
   "book": "Забронировать",
   "rent_terms_error": "You cannot continue without agreeing to the privacy policy and rental terms",
   "place_of_birth": "Place of birth",
-  "completion_booking": "Completion of the booking"
+  "completion_booking": "Completion of the booking",
+  "update": "Update",
+  "please_update": "Update your application, please"
 };
 static const Map<String, Map<String,dynamic>> mapLocales = {"ru": ru, "en": en};
 }

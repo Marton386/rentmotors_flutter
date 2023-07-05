@@ -1,14 +1,17 @@
+import 'dart:io';
 import 'map/map_page.dart';
 import '../../res/global.dart';
 import 'package:get_it/get_it.dart';
 import 'package:flutter/material.dart';
 import '../viewModels/page_view_model.dart';
+import 'package:url_launcher/url_launcher.dart';
 import '../bloc/station_bloc/station_bloc.dart';
 import '../../res/generated/locale_keys.g.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../widgets/try_again_button_widget.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:rentmotors/presentation/page/map/station_info.dart';
+import 'package:google_api_availability/google_api_availability.dart';
 import 'package:rentmotors/presentation/page/profile/profile_page.dart';
 import 'package:rentmotors/presentation/page/map/stations_page.dart';
 import 'package:rentmotors/presentation/page/booking/start_booking.dart';
@@ -23,10 +26,14 @@ class MainPage extends StatefulWidget {
 class _MainPageState extends State<MainPage> {
   final PageViewModel pageViewModel = GetIt.instance<PageViewModel>();
   static List<Widget> _widgetOptions = <Widget>[];
+  bool? isGooglePlayServicesAvailable;
 
   @override
   void initState() {
     super.initState();
+    if (!Platform.isIOS) {
+      checkGooglePlayServicesAvailability();
+    }
     context.read<StationBloc>().add(const StationEvent.fetch());
     _widgetOptions = <Widget>[
       const StartBookingPage(),
@@ -183,7 +190,7 @@ class _MainPageState extends State<MainPage> {
                 ),
                 const SizedBox(height: 30),
                 TryAgainButtonWidget(
-                  text: LocaleKeys.try_again.tr(),
+                  text: LocaleKeys.try_again.tr().toLowerCase(),
                   tryAgain: () {
                     context.read<StationBloc>().add(const StationEvent.fetch());
                   },
@@ -193,6 +200,82 @@ class _MainPageState extends State<MainPage> {
           ),
         );
       },
+      update: () {
+        return Scaffold(
+          appBar: AppBar(
+            title: Center(
+              child: Image.asset(
+                'assets/pictures/logo.png',
+                width: Global.logoWith,
+              ),
+            ),
+          ),
+          body: Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  LocaleKeys.please_update.tr(),
+                  style: Global.nameCarText,
+                ),
+                const SizedBox(height: 40),
+                TryAgainButtonWidget(
+                  text: LocaleKeys.update.tr(),
+                  tryAgain: () {
+                    if (Platform.isIOS) {
+                      openAppStore();
+                    } else {
+                      if (isGooglePlayServicesAvailable!) {
+                        openPlayMarket();
+                      } else {
+                        openAppGallery();
+                      }
+                    }
+                  },
+                ),
+              ],
+            ),
+          ),
+        );
+      },
     );
+  }
+
+  void openAppStore() async {
+    const String appId = '646358056';
+    final url = Uri.parse('itms-apps://apple.com/app/id$appId');
+    if (await canLaunchUrl(url)) {
+      await launchUrl(url);
+    } else {
+      throw 'Не удалось открыть App Store';
+    }
+  }
+
+  void openPlayMarket() async {
+    const String appId = 'com.anless.rentmotors';
+    final url = Uri.parse('market://details?id=$appId');
+    if (await canLaunchUrl(url)) {
+      await launchUrl(url);
+    } else {
+      throw 'Не удалось открыть PlayMarket';
+    }
+  }
+
+  void openAppGallery() async {
+    const String appId = 'C107227453';
+    final url = Uri.parse('https://appgallery.huawei.com/app/$appId');
+    if (await canLaunchUrl(url)) {
+      await launchUrl(url);
+    } else {
+      throw 'Не удалось открыть AppGallery';
+    }
+  }
+
+  Future<void> checkGooglePlayServicesAvailability() async {
+    GooglePlayServicesAvailability availability =
+    await GoogleApiAvailability.instance.checkGooglePlayServicesAvailability();
+    setState(() {
+      isGooglePlayServicesAvailable = availability == GooglePlayServicesAvailability.success;
+    });
   }
 }

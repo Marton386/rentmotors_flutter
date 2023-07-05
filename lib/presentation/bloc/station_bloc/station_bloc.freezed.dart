@@ -170,6 +170,7 @@ mixin _$StationState {
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
     required TResult Function() loaded,
+    required TResult Function() update,
     required TResult Function(String error) error,
   }) =>
       throw _privateConstructorUsedError;
@@ -177,6 +178,7 @@ mixin _$StationState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loading,
     TResult? Function()? loaded,
+    TResult? Function()? update,
     TResult? Function(String error)? error,
   }) =>
       throw _privateConstructorUsedError;
@@ -184,6 +186,7 @@ mixin _$StationState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
     TResult Function()? loaded,
+    TResult Function()? update,
     TResult Function(String error)? error,
     required TResult orElse(),
   }) =>
@@ -192,6 +195,7 @@ mixin _$StationState {
   TResult map<TResult extends Object?>({
     required TResult Function(StationStateLoading value) loading,
     required TResult Function(StationStateLoaded value) loaded,
+    required TResult Function(StationStateUpdate value) update,
     required TResult Function(StationStateError value) error,
   }) =>
       throw _privateConstructorUsedError;
@@ -199,6 +203,7 @@ mixin _$StationState {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(StationStateLoading value)? loading,
     TResult? Function(StationStateLoaded value)? loaded,
+    TResult? Function(StationStateUpdate value)? update,
     TResult? Function(StationStateError value)? error,
   }) =>
       throw _privateConstructorUsedError;
@@ -206,6 +211,7 @@ mixin _$StationState {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(StationStateLoading value)? loading,
     TResult Function(StationStateLoaded value)? loaded,
+    TResult Function(StationStateUpdate value)? update,
     TResult Function(StationStateError value)? error,
     required TResult orElse(),
   }) =>
@@ -270,6 +276,7 @@ class _$StationStateLoading implements StationStateLoading {
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
     required TResult Function() loaded,
+    required TResult Function() update,
     required TResult Function(String error) error,
   }) {
     return loading();
@@ -280,6 +287,7 @@ class _$StationStateLoading implements StationStateLoading {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loading,
     TResult? Function()? loaded,
+    TResult? Function()? update,
     TResult? Function(String error)? error,
   }) {
     return loading?.call();
@@ -290,6 +298,7 @@ class _$StationStateLoading implements StationStateLoading {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
     TResult Function()? loaded,
+    TResult Function()? update,
     TResult Function(String error)? error,
     required TResult orElse(),
   }) {
@@ -304,6 +313,7 @@ class _$StationStateLoading implements StationStateLoading {
   TResult map<TResult extends Object?>({
     required TResult Function(StationStateLoading value) loading,
     required TResult Function(StationStateLoaded value) loaded,
+    required TResult Function(StationStateUpdate value) update,
     required TResult Function(StationStateError value) error,
   }) {
     return loading(this);
@@ -314,6 +324,7 @@ class _$StationStateLoading implements StationStateLoading {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(StationStateLoading value)? loading,
     TResult? Function(StationStateLoaded value)? loaded,
+    TResult? Function(StationStateUpdate value)? update,
     TResult? Function(StationStateError value)? error,
   }) {
     return loading?.call(this);
@@ -324,6 +335,7 @@ class _$StationStateLoading implements StationStateLoading {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(StationStateLoading value)? loading,
     TResult Function(StationStateLoaded value)? loaded,
+    TResult Function(StationStateUpdate value)? update,
     TResult Function(StationStateError value)? error,
     required TResult orElse(),
   }) {
@@ -378,6 +390,7 @@ class _$StationStateLoaded implements StationStateLoaded {
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
     required TResult Function() loaded,
+    required TResult Function() update,
     required TResult Function(String error) error,
   }) {
     return loaded();
@@ -388,6 +401,7 @@ class _$StationStateLoaded implements StationStateLoaded {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loading,
     TResult? Function()? loaded,
+    TResult? Function()? update,
     TResult? Function(String error)? error,
   }) {
     return loaded?.call();
@@ -398,6 +412,7 @@ class _$StationStateLoaded implements StationStateLoaded {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
     TResult Function()? loaded,
+    TResult Function()? update,
     TResult Function(String error)? error,
     required TResult orElse(),
   }) {
@@ -412,6 +427,7 @@ class _$StationStateLoaded implements StationStateLoaded {
   TResult map<TResult extends Object?>({
     required TResult Function(StationStateLoading value) loading,
     required TResult Function(StationStateLoaded value) loaded,
+    required TResult Function(StationStateUpdate value) update,
     required TResult Function(StationStateError value) error,
   }) {
     return loaded(this);
@@ -422,6 +438,7 @@ class _$StationStateLoaded implements StationStateLoaded {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(StationStateLoading value)? loading,
     TResult? Function(StationStateLoaded value)? loaded,
+    TResult? Function(StationStateUpdate value)? update,
     TResult? Function(StationStateError value)? error,
   }) {
     return loaded?.call(this);
@@ -432,6 +449,7 @@ class _$StationStateLoaded implements StationStateLoaded {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(StationStateLoading value)? loading,
     TResult Function(StationStateLoaded value)? loaded,
+    TResult Function(StationStateUpdate value)? update,
     TResult Function(StationStateError value)? error,
     required TResult orElse(),
   }) {
@@ -444,6 +462,120 @@ class _$StationStateLoaded implements StationStateLoaded {
 
 abstract class StationStateLoaded implements StationState {
   const factory StationStateLoaded() = _$StationStateLoaded;
+}
+
+/// @nodoc
+abstract class _$$StationStateUpdateCopyWith<$Res> {
+  factory _$$StationStateUpdateCopyWith(_$StationStateUpdate value,
+          $Res Function(_$StationStateUpdate) then) =
+      __$$StationStateUpdateCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$StationStateUpdateCopyWithImpl<$Res>
+    extends _$StationStateCopyWithImpl<$Res, _$StationStateUpdate>
+    implements _$$StationStateUpdateCopyWith<$Res> {
+  __$$StationStateUpdateCopyWithImpl(
+      _$StationStateUpdate _value, $Res Function(_$StationStateUpdate) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$StationStateUpdate implements StationStateUpdate {
+  const _$StationStateUpdate();
+
+  @override
+  String toString() {
+    return 'StationState.update()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$StationStateUpdate);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() loading,
+    required TResult Function() loaded,
+    required TResult Function() update,
+    required TResult Function(String error) error,
+  }) {
+    return update();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? loading,
+    TResult? Function()? loaded,
+    TResult? Function()? update,
+    TResult? Function(String error)? error,
+  }) {
+    return update?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? loading,
+    TResult Function()? loaded,
+    TResult Function()? update,
+    TResult Function(String error)? error,
+    required TResult orElse(),
+  }) {
+    if (update != null) {
+      return update();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(StationStateLoading value) loading,
+    required TResult Function(StationStateLoaded value) loaded,
+    required TResult Function(StationStateUpdate value) update,
+    required TResult Function(StationStateError value) error,
+  }) {
+    return update(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(StationStateLoading value)? loading,
+    TResult? Function(StationStateLoaded value)? loaded,
+    TResult? Function(StationStateUpdate value)? update,
+    TResult? Function(StationStateError value)? error,
+  }) {
+    return update?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(StationStateLoading value)? loading,
+    TResult Function(StationStateLoaded value)? loaded,
+    TResult Function(StationStateUpdate value)? update,
+    TResult Function(StationStateError value)? error,
+    required TResult orElse(),
+  }) {
+    if (update != null) {
+      return update(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class StationStateUpdate implements StationState {
+  const factory StationStateUpdate() = _$StationStateUpdate;
 }
 
 /// @nodoc
@@ -512,6 +644,7 @@ class _$StationStateError implements StationStateError {
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
     required TResult Function() loaded,
+    required TResult Function() update,
     required TResult Function(String error) error,
   }) {
     return error(this.error);
@@ -522,6 +655,7 @@ class _$StationStateError implements StationStateError {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loading,
     TResult? Function()? loaded,
+    TResult? Function()? update,
     TResult? Function(String error)? error,
   }) {
     return error?.call(this.error);
@@ -532,6 +666,7 @@ class _$StationStateError implements StationStateError {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
     TResult Function()? loaded,
+    TResult Function()? update,
     TResult Function(String error)? error,
     required TResult orElse(),
   }) {
@@ -546,6 +681,7 @@ class _$StationStateError implements StationStateError {
   TResult map<TResult extends Object?>({
     required TResult Function(StationStateLoading value) loading,
     required TResult Function(StationStateLoaded value) loaded,
+    required TResult Function(StationStateUpdate value) update,
     required TResult Function(StationStateError value) error,
   }) {
     return error(this);
@@ -556,6 +692,7 @@ class _$StationStateError implements StationStateError {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(StationStateLoading value)? loading,
     TResult? Function(StationStateLoaded value)? loaded,
+    TResult? Function(StationStateUpdate value)? update,
     TResult? Function(StationStateError value)? error,
   }) {
     return error?.call(this);
@@ -566,6 +703,7 @@ class _$StationStateError implements StationStateError {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(StationStateLoading value)? loading,
     TResult Function(StationStateLoaded value)? loaded,
+    TResult Function(StationStateUpdate value)? update,
     TResult Function(StationStateError value)? error,
     required TResult orElse(),
   }) {

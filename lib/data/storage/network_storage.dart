@@ -3,6 +3,7 @@ import '../../utils/result.dart';
 import '../models/responses/cancel/data_cancel.dart';
 import '../models/responses/dadata/data_dadata.dart';
 import '../models/responses/modify/data_modify.dart';
+import '../models/responses/app_versions/app_versions.dart';
 import '../models/responses/cancel_pay/data_cancel_pay.dart';
 import '../models/requests/org_request/data_org_request.dart';
 import '../models/responses/client_info/data_client_info.dart';
@@ -31,6 +32,9 @@ abstract class NetworkStorage {
 
   //check client API
   Future<Result<DataClientInfo>> checkClient(String lastName, String email);
+
+  //check app version
+  Future<Result<DataAppVersions>> checkAppVer();
 
   //org API
   Future<Result<DataDadata>> getOrg(DataOrgRequest orgRequest);

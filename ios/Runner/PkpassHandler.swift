@@ -23,7 +23,10 @@ public class SwiftHelloPlugin: NSObject, FlutterPlugin {
     }
 
     public func handle(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
-        if call.method == "downloadAndOpenPkpass" {
+        if call.method == "getAppVersion" {
+            let version = getiOSVersion()
+            result(version)
+        } else if call.method == "downloadAndOpenPkpass" {
             if let args = call.arguments as? [String: Any],
                 let urlString = args["url"] as? String,
                 let url = URL(string: urlString),
@@ -57,5 +60,11 @@ public class SwiftHelloPlugin: NSObject, FlutterPlugin {
         } else {
             result(FlutterMethodNotImplemented)
         }
+    }
+}
+
+public extension SwiftHelloPlugin {
+    func getiOSVersion() -> String {
+        return Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "0.0"
     }
 }

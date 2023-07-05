@@ -164,5 +164,7 @@
   "book": "Забронировать",
   "rent_terms_error": "You cannot continue without agreeing to the privacy policy and rental terms",
   "place_of_birth": "Place of birth",
-  "completion_booking": "Completion of the booking"
+  "completion_booking": "Completion of the booking",
+  "update": "Update",
+  "please_update": "Update your application, please"
 }

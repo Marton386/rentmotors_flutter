@@ -30,7 +30,7 @@ class TryAgainButtonWidget extends StatelessWidget {
         backgroundColor: MaterialStateProperty.all<Color>(Global.orange),
         foregroundColor: MaterialStateProperty.all<Color>(Global.backgroundLightTheme),
       ),
-      child: Text(text.toLowerCase()),
+      child: Text(text),
     );
   }
 }

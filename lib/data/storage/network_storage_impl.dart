@@ -9,6 +9,7 @@ import '../../res/generated/locale_keys.g.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:rentmotors/utils/error_codes.dart';
 import 'package:easy_localization/easy_localization.dart';
+import '../models/responses/app_versions/app_versions.dart';
 import 'package:rentmotors/data/models/responses/book/data_book.dart';
 import 'package:rentmotors/data/models/responses/modify/data_modify.dart';
 import 'package:rentmotors/data/models/responses/cancel/data_cancel.dart';
@@ -29,6 +30,7 @@ class NetworkStorageImpl implements NetworkStorage {
   final baseURL = "https://api.onlinefleet.ru";
   final baseURLWithoutHTTP = "api.onlinefleet.ru";
   final orgURL = "suggestions.dadata.ru";
+  final rmURL = "https://rentmotors.ru";
   var headerHelper = GetIt.instance<HeaderHelper>();
   var errCodes = ErrorCodes();
 
@@ -94,6 +96,27 @@ class NetworkStorageImpl implements NetworkStorage {
       );
       var jsonResult = json.decode(response.body);
       DataSearchCarResponse data = DataSearchCarResponse.fromJson(jsonResult);
+      return Success(data);
+    } on HttpException catch (e) {
+      return Future.value(Error(e.message));
+    } on SocketException {
+      return Future.value(
+          Error(errCodes.getMessageByCode(errCodes.REQUEST_FAILURE)));
+    } catch (e) {
+      return Future.value(Error(errCodes.getMessageByCode(errCodes.FAILURE)));
+    }
+  }
+
+  //check app version
+  @override
+  Future<Result<DataAppVersions>> checkAppVer() async {
+    try {
+      var response = await http.get(
+        Uri.parse('$rmURL/apps_config.json'),
+        headers: headerHelper.getRmGetHeader(),
+      );
+      var jsonResult = json.decode(response.body);
+      DataAppVersions data = DataAppVersions.fromJson(jsonResult);
       return Success(data);
     } on HttpException catch (e) {
       return Future.value(Error(e.message));
