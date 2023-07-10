@@ -65,5 +65,7 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
+	<key>PKPassTypeIdentifier</key>
+    <string>pass.rentmotors</string>
 </dict>
 </plist>

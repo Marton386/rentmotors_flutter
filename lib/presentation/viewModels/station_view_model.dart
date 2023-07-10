@@ -27,7 +27,7 @@ class StationViewModel {
 
   void selectStation(int stationID) {
     int counter = 0;
-    while ((counter < stations.length-1) && (selectedStation == -1)) {
+    while ((counter <= stations.length-1) && (selectedStation == -1)) {
       if (stations[counter].id == stationID) {
         selectedStation = counter;
       }
