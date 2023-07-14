@@ -136,11 +136,16 @@ class _CarInfoWidgetState extends State<CarInfoWidget> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
+                      (widget.car.mileage > 0) ?
                       Text(
                         "${LocaleKeys.limited_mileage.tr()} ${
                             LocaleKeys.km.tr(namedArgs: {'currentKm': widget.car
                                 .mileage.toString(),})
                         }",
+                        style: Global.facilitiesText,
+                      ) :
+                      Text(
+                        LocaleKeys.unlimited_mileage.tr(),
                         style: Global.facilitiesText,
                       ),
                       Container(),

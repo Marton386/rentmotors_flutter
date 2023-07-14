@@ -1,3 +1,5 @@
+import 'package:rentmotors/utils/alerts_shower.dart';
+
 import '../../../res/global.dart';
 import 'package:flutter/material.dart';
 import '../../../utils/price_formatter.dart';
@@ -98,10 +100,30 @@ class CarItem extends StatelessWidget {
                 ),
               ),
               Flexible(
-                child: FadeInImage.assetNetwork(
-                  placeholder: 'assets/pictures/placeholder_car.png',
-                  image: car.urlImg,
-                  fit: BoxFit.contain,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.end,
+                  children: [
+                    if (car.onRequest)
+                      InkWell(
+                        child: const Icon(
+                          Icons.info,
+                          size: 25,
+                          color: Global.darkRed,
+                        ),
+                        onTap: () {
+                          AlertsShower.showMessage(
+                            context,
+                            LocaleKeys.on_request.tr(),
+                            LocaleKeys.car_on_request.tr(),
+                          );
+                        },
+                      ),
+                    FadeInImage.assetNetwork(
+                      placeholder: 'assets/pictures/placeholder_car.png',
+                      image: car.urlImg,
+                      fit: BoxFit.contain,
+                    ),
+                  ],
                 ),
               ),
             ],

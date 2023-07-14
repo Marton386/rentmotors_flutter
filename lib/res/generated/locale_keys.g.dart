@@ -28,6 +28,7 @@ abstract class  LocaleKeys {
   static const conditioner = 'conditioner';
   static const daily_tariff = 'daily_tariff';
   static const limited_mileage = 'limited_mileage';
+  static const unlimited_mileage = 'unlimited_mileage';
   static const deposit_caps = 'deposit_caps';
   static const pickup_and_dropoff = 'pickup_and_dropoff';
   static const enter_address = 'enter_address';
@@ -84,6 +85,7 @@ abstract class  LocaleKeys {
   static const on_map = 'on_map';
   static const date_too_early = 'date_too_early';
   static const no_available_cars = 'no_available_cars';
+  static const on_request = 'on_request';
   static const car_on_request = 'car_on_request';
   static const choose_car = 'choose_car';
   static const choose_new_car = 'choose_new_car';
